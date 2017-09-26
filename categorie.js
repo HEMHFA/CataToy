@@ -19,6 +19,9 @@ class Categorie {
         });
     }
 
+    get_nb_jouets(){
+        return this._lesJouets.length;
+    }
 
 }
 module.exports = Categorie;
