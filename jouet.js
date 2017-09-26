@@ -2,7 +2,7 @@ class Jouet {
 
     constructor(unLibelle, uneTrancheAge, uneCategorie){
                 this._libelle = unLibelle;
-                this._trancheAge = uneTancheAge;
+                this._trancheAge = uneTrancheAge;
                 this._categorie = uneCategorie;
 
                 this._categorie.ajouterJouet(this);
