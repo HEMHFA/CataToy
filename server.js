@@ -7,6 +7,9 @@ const Categorie = require('./categorie.js');
 
 const app = express();
 
+app.set('views','./views');
+app.set('view engine','pug');
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -41,7 +44,7 @@ lesJouets.push(unJouet3);
 //ROUTES
 app.get('/', function(req,res){
     let responseText = 'Bienvenue dans le catalogue de jouet';
-    res.send('responseText');
+    res.render('index', {message : responseText });
 });
 
 //affiche tous les jouets
@@ -75,21 +78,18 @@ app.get('/jouets',
 
 });
 
-//Affiche le jouet d'id :id
-app.get('/jouets/:id',
-    (req, res) => {
+//Ajoute un jouet
+app.post('/jouets', (req, res) => {
+    let jouetLib = req.body.libelle;
+    let categ  = req.body.categ;
+    let trancheA = req.body.tranche;
 
-        let id=req.params.id;
+    lesJouets.push(new Jouet(lesJouets.length+1,jouetLib,lesTranches[trancheA-1],lesCateg[categ-1]));
+    console.log("Jouet ajouté");
+    res.redirect('/jouets');
 
-        if (id < lesJouets.length+1){
-            let responseText = `Jouet : ${lesJouets[id-1].libelle}`;
-            res.send(responseText);
-        }
-        else
-        {
-            res.status(404).send('Sorry ! Toy doesn\'t exist');
-        }
-    });
+
+});
 
 //Affiche le jouet d'id :id
 app.get('/jouets/:id',
