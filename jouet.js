@@ -5,7 +5,7 @@ class Jouet {
                 this._trancheAge = uneTrancheAge;
                 this._categorie = uneCategorie;
 
-                this._categorie.ajouterJouet(this);
+                this._categorie.ajouterJouets(this);
             }
 
     get libelle(){
