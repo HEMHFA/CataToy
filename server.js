@@ -43,7 +43,7 @@ lesJouets.push(unJouet3);
 
 //ROUTES
 app.get('/', function(req,res){
-    let responseText = 'Bienvenue dans le catalogue de jouet';
+    let responseText = 'Bienvenue dans le catalogue de jouets';
     res.render('index', {message : responseText });
 });
 
